@@ -30,4 +30,6 @@ public interface PersonaFacadeLocal {
 
     int count();
     
+     List<Persona> buscarClientes();
+    
 }

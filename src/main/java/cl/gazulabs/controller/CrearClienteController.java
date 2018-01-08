@@ -31,6 +31,7 @@ public class CrearClienteController implements Serializable{
     public void registrar(){
         try {
             persona.setCodigo(persona.getRut());
+            persona.setCliente(true);
             personaFacade.create(persona);
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Aviso", "Se a registrado de forma correcta "));
         } catch (Exception e) {

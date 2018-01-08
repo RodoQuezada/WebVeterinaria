@@ -37,6 +37,9 @@ public class Persona implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "fechaNacimiento")
     private Date fechaNacimiento;
+    
+     @Column(name="cliente")
+    private boolean cliente = false;
 
     public int getCodigo() {
         return codigo;
@@ -85,5 +88,15 @@ public class Persona implements Serializable {
     public void setFechaNacimiento(Date fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
+
+    public boolean isCliente() {
+        return cliente;
+    }
+
+    public void setCliente(boolean cliente) {
+        this.cliente = cliente;
+    }
+    
+    
 
 }

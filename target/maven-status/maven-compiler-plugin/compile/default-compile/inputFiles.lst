@@ -7,6 +7,7 @@
 /Users/rodo/Desktop/webveterinaria/src/main/java/cl/gazulabs/ejb/EspecieFacade.java
 /Users/rodo/Desktop/webveterinaria/src/main/java/cl/gazulabs/controller/PlantillaController.java
 /Users/rodo/Desktop/webveterinaria/src/main/java/cl/gazulabs/controller/CrearClienteController.java
+/Users/rodo/Desktop/webveterinaria/src/main/java/cl/gazulabs/controller/ListarClientesController.java
 /Users/rodo/Desktop/webveterinaria/src/main/java/cl/gazulabs/controller/UsuarioController.java
 /Users/rodo/Desktop/webveterinaria/src/main/java/cl/gazulabs/model/Persona.java
 /Users/rodo/Desktop/webveterinaria/src/main/java/cl/gazulabs/ejb/UsuarioFacadeLocal.java

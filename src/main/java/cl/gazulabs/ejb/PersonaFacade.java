@@ -6,9 +6,12 @@
 package cl.gazulabs.ejb;
 
 import cl.gazulabs.model.Persona;
+import java.util.ArrayList;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -26,6 +29,22 @@ public class PersonaFacade extends AbstractFacade<Persona> implements PersonaFac
 
     public PersonaFacade() {
         super(Persona.class);
+    }
+    
+    @Override
+    public List<Persona> buscarClientes(){
+        List<Persona> lista = new ArrayList<>();
+        String consulta;
+        try {
+            consulta = "FROM Persona p WHERE p.cliente=?1";
+            Query query = em.createQuery(consulta);
+            query.setParameter(1, true);           
+            lista = query.getResultList();
+           
+        } catch (Exception e) {
+            throw e;
+        } 
+        return lista;        
     }
     
 }
