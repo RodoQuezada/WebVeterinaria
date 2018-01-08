@@ -2,6 +2,7 @@ cl/gazulabs/model/Persona_.class
 cl/gazulabs/model/Menu.class
 cl/gazulabs/ejb/MenuFacade.class
 cl/gazulabs/ejb/PersonaFacade.class
+cl/gazulabs/controller/CrearClienteController.class
 cl/gazulabs/model/Especie.class
 cl/gazulabs/model/Especie_.class
 cl/gazulabs/model/Menu_.class

@@ -10,13 +10,37 @@
             <ui:define name="content">
                 <h2>Crear Cliente</h2>
                 <h:form>
+                    <p:growl id="mensaje" autoUpdate="false"  severity="info, error" showSummary="true" showDetail="true"/>
                     <p:fieldset legend="Datos Cliente">
                         <p:panelGrid columns="3">
-                            
+                       <p:outputLabel for="txtRut" value="Rut" />
+                       <p:inputText  id="txtRut" value="#{crearClienteController.persona.rut}" required="true" />
+                            <p:message for="txtRut" />
+
+
+                            <p:outputLabel for="txtNombres" value="Nombres" />
+                            <p:inputText  id="txtNombres" value="#{crearClienteController.persona.nombres}" required="true" />
+                            <p:message for="txtNombres" />
+
+                            <p:outputLabel for="txtApellido" value="Apellidos" />
+                            <p:inputText id="txtApellido" value="#{crearClienteController.persona.apellidos}" required="true" />
+                            <p:message for="txtApellido" />
+
+                            <p:outputLabel for="rbdSexo" value="Sexo" />
+                            <p:selectOneRadio id="rbdSexo" value="#{crearClienteController.persona.sexo}" required="true" >
+                                <f:selectItem itemValue="M" itemLabel="MASCULINO" />
+                                <f:selectItem itemValue="F" itemLabel="FEMENINO" />
+                            </p:selectOneRadio>
+                            <p:message for="rbdSexo" />
+
+                            <p:outputLabel for="dateFech" value="Fecha Nacimiento"  />
+                            <p:calendar id="dateFech" value="#{crearClienteController.persona.fechaNacimiento}" locale="es" required="true"  />  
+                            <p:message for="dateFech" />                           
                             
                             
                             
                         </p:panelGrid>   
+                         <p:commandButton value="Registrar" icon="ui-icon-check" update="mensaje" actionListener="#{crearClienteController.registrar()}"/>
                     </p:fieldset>
                 </h:form>
             </ui:define>
