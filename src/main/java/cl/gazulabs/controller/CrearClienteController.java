@@ -28,15 +28,16 @@ public class CrearClienteController implements Serializable{
     @Inject
     private Persona persona;
 
-    public void registrar(){
+    public String registrar(){
         try {
             persona.setCodigo(persona.getRut());
             persona.setCliente(true);
             personaFacade.create(persona);
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Aviso", "Se a registrado de forma correcta "));
         } catch (Exception e) {
-           FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Aviso", "Error al registrar"));       
+           FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Aviso", "Error al registrar. Error: "+e));       
         }
+        return "listarClientes";
     }
     
     

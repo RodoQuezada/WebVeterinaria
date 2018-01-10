@@ -10,15 +10,14 @@
             <ui:define name="content">
                 <h2> Listar Clientes </h2>                
                 <h:form >
-                    <p:growl id="mensaje" autoUpdate="false"  severity="info,error" showSummary="true" showDetail="true"/>
+                    <p:messages id="mensaje" autoUpdate="false"  severity="info,error" showSummary="true" showDetail="true"/>
                     <p:fieldset legend="Datos Cliente" >                       
                                        
                         <p:dataTable id="dt"  value="#{listarClientesController.listaClientes}" var="ls"  >                                                                                 
                             
                             <p:column headerText="Rut">
                                 <h:outputText value="#{ls.rut}" />
-                            </p:column> 
-                            
+                            </p:column>                             
                             <p:column headerText="Nombre">
                                 <h:outputText value="#{ls.nombres}" />
                             </p:column>                            
@@ -26,7 +25,7 @@
                                 <h:outputText value="#{ls.apellidos}" />
                             </p:column>                             
                              <p:column headerText="Eliminar">
-                                 <p:commandButton value="Eliminar"  /> 
+                                 <p:commandButton value="Eliminar" action="#{listarClientesController.eliminar(ls)}" update="@form" /> 
                             </p:column>                            
                         </p:dataTable>
                     </p:fieldset>                    

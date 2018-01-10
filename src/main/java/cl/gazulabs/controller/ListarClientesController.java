@@ -11,6 +11,8 @@ import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -30,6 +32,16 @@ public class ListarClientesController implements Serializable{
     @PostConstruct
     public void init(){
         listaClientes = personaFacade.buscarClientes();
+    }
+    
+    public String eliminar(Persona per){
+        try {
+            personaFacade.remove(per);
+             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Aviso", "Se a eliminador correctamente"));
+        } catch (Exception e) {
+             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Aviso", "Error al registrar. Error: "+e));       
+        }
+        return "listarClientes";
     }
     
     

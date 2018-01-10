@@ -1,15 +1,43 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">    >
     <body>
         <ui:composition template="./../../WEB-INF/templates/plantilla.xhtml">
             <ui:define name="content">
                 <h2>Ingresar Mascota</h2>
-                
-                
-                
-                
+                <h:form>
+                     <p:messages id="mensaje" autoUpdate="false"  severity="info, error" showSummary="true" showDetail="true"/>
+                    <p:fieldset legend="Datos de Mascota">
+                        <p:panelGrid columns="3">
+
+                            <p:outputLabel for="cboPersona" value="Nombre Dueño" />
+                            <p:selectOneMenu id="cboPersona" value="#{crearMascotaController.persona.codigo}" required="true" >
+                                <f:selectItems value="#{crearMascotaController.listaPersona}" var="lp" itemValue="#{lp.codigo}" itemLabel="#{lp.nombres} #{lp.apellidos}" />                               
+                            </p:selectOneMenu>
+                            <p:message for="cboPersona" /> 
+
+                            <p:outputLabel for="txtNombreMascota" value="Nombre Mascota" />
+                            <p:inputText id="txtNombreMascota" value="#{crearMascotaController.mascota.nombre}" required="true" />
+                            <p:message for="txtNombreMascota" />
+                            
+                            <p:outputLabel for="cboEspecie" value="Especie" />
+                            <p:selectOneMenu id="cboEspecie" value="#{crearMascotaController.especie.codigo}" required="true" >
+                                <f:selectItems value="#{crearMascotaController.listaEspecies}" var="esp" itemValue="#{esp.codigo}" itemLabel="#{esp.nombre}" />                               
+                            </p:selectOneMenu>
+                            <p:message for="cboEspecie" />   
+
+                            <p:outputLabel for="dateFech" value="Fecha Nacimiento"  />
+                            <p:calendar id="dateFech" value="#{crearMascotaController.mascota.fechaNacimiento}" locale="es" required="true"  />  
+                            <p:message for="dateFech" />
+
+                        </p:panelGrid>
+                        <p:commandButton value="Registrar" icon="ui-icon-check" update="@form" action="#{crearMascotaController.crear()}"/>
+                    </p:fieldset> 
+                </h:form>
             </ui:define>
         </ui:composition>
     </body>

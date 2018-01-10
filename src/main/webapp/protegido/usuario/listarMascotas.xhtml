@@ -1,11 +1,41 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"> 
     <body>
         <ui:composition template="./../../WEB-INF/templates/plantilla.xhtml">
             <ui:define name="content">
                 <h2>Lista de Mascotas</h2>
+                <h:form>
+                    <p:messages id="mensaje" autoUpdate="false"  severity="info,error" showSummary="true" showDetail="true"/>
+                    <p:fieldset legend="Datos Cliente" >
+                        <p:dataTable id="dt"  value="#{listarMascotasController.listaMascotas}" var="ls"  >
+
+                            <p:column headerText="Nombre Dueño">
+                                <h:outputText value="#{ls.persona.nombres} #{ls.persona.apellidos}" />
+                            </p:column> 
+                            
+                            <p:column headerText="Especie">
+                                <h:outputText value="#{ls.especie.nombre}" />
+                            </p:column> 
+                                                        
+                             <p:column headerText="Nombre Mascota">
+                                 <h:outputText value="#{ls.nombre}" />
+                            </p:column> 
+                            
+                            <p:column headerText="Fecha Nacimiento">
+                                <h:outputText value="#{ls.fechaNacimiento}" />
+                            </p:column>
+
+                             <p:column headerText="Eliminar">
+                                 <p:commandButton value="Eliminar" />
+                            </p:column>                     
+                        </p:dataTable>
+                    </p:fieldset>    
+                </h:form>
             </ui:define>
         </ui:composition>
     </body>

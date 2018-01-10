@@ -10,12 +10,14 @@ cl/gazulabs/model/Menu_.class
 cl/gazulabs/controller/IndexController.class
 cl/gazulabs/model/Mascota.class
 cl/gazulabs/ejb/EspecieFacadeLocal.class
+cl/gazulabs/ejb/MascotaFacade.class
 cl/gazulabs/ejb/UsuarioFacade.class
 cl/gazulabs/ejb/AbstractFacade.class
 cl/gazulabs/controller/PlantillaController.class
 cl/gazulabs/model/Persona.class
 cl/gazulabs/ejb/PersonaFacadeLocal.class
 cl/gazulabs/ejb/MenuFacadeLocal.class
+cl/gazulabs/controller/CrearMascotaController.class
 cl/gazulabs/ejb/UsuarioFacadeLocal.class
 cl/gazulabs/model/Usuario_.class
 cl/gazulabs/model/Usuario.class
@@ -23,4 +25,6 @@ cl/gazulabs/controller/EspecieController.class
 cl/gazulabs/controller/UsuarioController.class
 cl/gazulabs/model/Mascota_.class
 cl/gazulabs/controller/MenuController.class
+cl/gazulabs/controller/ListarMascotasController.class
 cl/gazulabs/ejb/EspecieFacade.class
+cl/gazulabs/ejb/MascotaFacadeLocal.class
