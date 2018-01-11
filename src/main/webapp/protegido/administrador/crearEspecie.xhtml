@@ -8,13 +8,13 @@
         <ui:composition template="./../../WEB-INF/templates/plantilla.xhtml">
             <ui:define name="content">
                 <h:form >
-                    <p:growl id="mensaje" autoUpdate="false"  severity="info,error" showSummary="true" showDetail="true"/>
+                    <p:messages id="mensaje" autoUpdate="false"  severity="info,error" showSummary="true" showDetail="true"/>
                     <p:fieldset legend="Agregar Especie" >
                         <p:panelGrid columns="2">
                             <p:outputLabel for="txtNombre" value="Nombre Especie" />
                             <p:inputText id="txtNombre" value="#{especieController.especie.nombre}" />                                                        
                             <h:column/>
-                            <p:commandButton value="Registrar" actionListener="#{especieController.create()}" update="mensaje" />
+                            <p:commandButton value="Registrar" action="#{especieController.create()}" update="@form" />
                         </p:panelGrid>
                                        
                         <p:dataTable id="dt"  value="#{especieController.lista}" var="ls"  >                                                                                 
@@ -25,7 +25,7 @@
                                 <h:outputText value="#{ls.estado}" />
                             </p:column>                            
                              <p:column headerText="Eliminar">
-                                 <p:commandButton value="Eliminar" actionListener="#{especieController.delete(ls)}" update="@form" /> 
+                                 <p:commandButton value="Eliminar" action="#{especieController.delete(ls)}" update="@form" /> 
                             </p:column>                            
                         </p:dataTable>
                     </p:fieldset>                    

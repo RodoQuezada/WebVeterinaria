@@ -31,7 +31,7 @@
                             </p:column>
 
                              <p:column headerText="Eliminar">
-                                 <p:commandButton value="Eliminar" />
+                                 <p:commandButton value="Eliminar" action="#{listarMascotasController.eliminar(ls)}" update="@form"/>
                             </p:column>                     
                         </p:dataTable>
                     </p:fieldset>    

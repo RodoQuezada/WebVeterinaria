@@ -39,7 +39,7 @@ public class EspecieController implements Serializable {
         this.especie = especie;
     }
 
-    public void create() {
+    public String create() {
         try {
             if (!especie.getNombre().equals("")) {
                 especieFacade.create(especie);
@@ -50,17 +50,19 @@ public class EspecieController implements Serializable {
             }            
         } catch (Exception e) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Aviso", "Error al registrar"));
-        }      
+        } 
+        return "crearEspecie";
     }
 
-    public void delete(Especie es) {
+    public String delete(Especie es) {
         System.out.println("eliminar");
         try {
          especieFacade.remove(es);
          FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Aviso", "Se a eliminado el registro"));
          } catch (Exception e) {
          FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Aviso", "Error al registrar"));
-         }      
+         } 
+        return "crearEspecie";
     }
 
     public List<Especie> getLista() {

@@ -9,6 +9,7 @@ import cl.gazulabs.ejb.UsuarioFacadeLocal;
 import cl.gazulabs.model.Persona;
 import cl.gazulabs.model.Usuario;
 import java.io.Serializable;
+import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
@@ -34,10 +35,11 @@ public class UsuarioController implements Serializable{
     @Inject
     private Persona persona;
     
+    private List<Usuario> listaUsuarios;
+    
     @PostConstruct
     public void init(){
-     //   usuario = new Usuario();
-     //   persona = new Persona();                
+        listaUsuarios =  usuarioEJB.findAll();
     }
 
     public Usuario getUsuario() {
@@ -55,7 +57,7 @@ public class UsuarioController implements Serializable{
     public void setPersona(Persona persona) {
         this.persona = persona;
     }
-    
+           
     public String registrar(){
         try {
             persona.setCodigo(persona.getRut());
@@ -65,7 +67,25 @@ public class UsuarioController implements Serializable{
         } catch (Exception e) {
            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Aviso", "Error al registrar"));
         }
-        return "crearEspecie";
+        return "listarUsuario";
+    }
+    
+    public String eliminar(Usuario us){
+        try {
+            usuarioEJB.remove(us);
+             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Aviso", "Se a Eliminado de forma correcta "));
+        } catch (Exception e) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Aviso", "Error al eliminar"));
+        }
+        return "listarUsuario";
+    }
+
+    public List<Usuario> getListaUsuarios() {
+        return listaUsuarios;
+    }
+
+    public void setListaUsuarios(List<Usuario> listaUsuarios) {
+        this.listaUsuarios = listaUsuarios;
     }
     
 }

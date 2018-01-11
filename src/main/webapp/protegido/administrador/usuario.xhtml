@@ -9,7 +9,7 @@
         <ui:composition template="./../../WEB-INF/templates/plantilla.xhtml">
             <ui:define name="content">
                 <h:form>
-                    <p:growl id="mensaje" autoUpdate="false"  severity="info, error" showSummary="true" showDetail="true"/>
+                    <p:messages id="mensaje" autoUpdate="false"  severity="info, error" showSummary="true" showDetail="true"/>
                     <p:fieldset legend="Datos Personales" >
                         <p:panelGrid columns="3" id="pgDatos" >
 
@@ -70,8 +70,9 @@
                             <p:message for="clave2" />
 
                         </p:panelGrid>
-                        <p:commandButton value="Registrar" icon="ui-icon-check" update="pgDatos,pgCuenta,mensaje" actionListener="#{usuarioController.registrar()}"/>
+                        <p:commandButton value="Registrar" icon="ui-icon-check" update="pgDatos,pgCuenta,mensaje" action="#{usuarioController.registrar()}"/>
                     </p:fieldset>
+                   
                 </h:form>
                 <h:outputScript library="js" name="spanishLocale.js" /> 
             </ui:define>
